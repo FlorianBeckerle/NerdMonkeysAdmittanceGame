@@ -76,5 +76,6 @@ public class MixingStation : MonoBehaviour
         {
             i.ingredientSO = result;
         }
+        go.name = result.Name;
     }
 }

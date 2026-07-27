@@ -11,8 +11,11 @@ public class Ingredient : MonoBehaviour
         ChangeColor();
     }
 
-    private void ChangeColor()
+    public void ChangeColor()
     {
+        if (ingredientSO == null) return;
+        
+        
         _renderer = GetComponent<MeshRenderer>();
 
         //get materials array

@@ -4,6 +4,7 @@ public class Interact : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private Camera cam;
+    [SerializeField] private HudInfo hudInfo;
     
     [Header("Pickup Settings")]
     [SerializeField] private LayerMask pickupLayerMask;
@@ -25,6 +26,19 @@ public class Interact : MonoBehaviour
     }
     void Update()
     {
+        RaycastHit hit;
+        if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out hit, pickupRange, pickupLayerMask))
+        {
+            if (hit.transform.root != this.transform.root) // ignore self and children
+            {
+                
+                hudInfo.UpdateInfoText(hit.transform.name);
+            }
+        }
+        else
+        {
+            hudInfo.UpdateInfoText("");
+        }
         //check if left click pressed
         if (InputRouter.instance.AttackPressed)
         {
@@ -32,15 +46,16 @@ public class Interact : MonoBehaviour
             {
                 Debug.Log("Trying to pickup object");
                 Debug.DrawRay(cam.transform.position, cam.transform.TransformDirection(Vector3.forward) * pickupRange, Color.red, 5f);
-                RaycastHit hit;
-                if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out hit, pickupRange, pickupLayerMask))
-                {
+                //RaycastHit hit;
+                //if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out hit, pickupRange, pickupLayerMask))
+                //{
                     if (hit.transform.root != this.transform.root) // ignore self and children
                     {
                         PickupObject(hit.transform.gameObject);
-                        Debug.Log("Found Object: " + hit.transform.name);
+                        /*Debug.Log("Found Object: " + hit.transform.name);
+                        hudInfo.UpdateInfoText(hit.transform.name);*/
                     }
-                }
+                //}
             }
             
             if (heldObject != null)
