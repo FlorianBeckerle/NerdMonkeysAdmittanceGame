@@ -5082,6 +5082,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Playerbody
       objectReference: {fileID: 0}
+    - target: {fileID: 3427912222013219827, guid: d0645072a9eb05e419c4d0fc3a40990e, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3427912222013219827, guid: d0645072a9eb05e419c4d0fc3a40990e, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3427912222013219827, guid: d0645072a9eb05e419c4d0fc3a40990e, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.5210069
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932250943773544479, guid: d0645072a9eb05e419c4d0fc3a40990e, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932250943773544479, guid: d0645072a9eb05e419c4d0fc3a40990e, type: 3}
+      propertyPath: m_ImplicitCom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932250943773544479, guid: d0645072a9eb05e419c4d0fc3a40990e, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932250943773544479, guid: d0645072a9eb05e419c4d0fc3a40990e, type: 3}
+      propertyPath: m_ImplicitTensor
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8673527668001653610, guid: d0645072a9eb05e419c4d0fc3a40990e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5120,6 +5148,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8673527668001653610, guid: d0645072a9eb05e419c4d0fc3a40990e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9019570908668257677, guid: d0645072a9eb05e419c4d0fc3a40990e, type: 3}
+      propertyPath: m_Damper
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9019570908668257677, guid: d0645072a9eb05e419c4d0fc3a40990e, type: 3}
+      propertyPath: m_Spring
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9019570908668257677, guid: d0645072a9eb05e419c4d0fc3a40990e, type: 3}
+      propertyPath: m_MaxDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9019570908668257677, guid: d0645072a9eb05e419c4d0fc3a40990e, type: 3}
+      propertyPath: m_AutoConfigureConnectedAnchor
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

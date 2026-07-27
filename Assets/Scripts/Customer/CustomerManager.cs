@@ -67,7 +67,8 @@ public class CustomerManager : MonoBehaviour
             maxDemand = maxOrderSize;
         }
         int demand = Random.Range(1, maxDemand +1);
-
+        demand = 6;
+        
         //Clear list
         currentOrder = new List<IngredientSO>();
 
