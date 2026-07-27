@@ -30,5 +30,10 @@ public class IngredientCollectionSO : ScriptableObject
 
         return failedIngredient; // no combination found
     }
+
+    public List<IngredientSO> GetIngredientSos()
+    {
+        return ingredients;
+    }
     
 }

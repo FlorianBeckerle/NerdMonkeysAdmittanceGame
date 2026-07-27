@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Blue
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
   Name: Blue
-  color: {r: 0, g: 0, b: 1, a: 0}
+  color: {r: 0, g: 0, b: 1, a: 1}
   leftIngredient: {fileID: 0}
   rightIngredient: {fileID: 0}

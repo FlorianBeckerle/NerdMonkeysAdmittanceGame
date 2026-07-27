@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Yellow
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
   Name: Yellow
-  color: {r: 1, g: 1, b: 0, a: 0}
+  color: {r: 1, g: 1, b: 0, a: 1}
   leftIngredient: {fileID: 11400000, guid: 18e8ed0680fd238448cc2e6283fb80fc, type: 2}
   rightIngredient: {fileID: 11400000, guid: 0cff1aa83bfbf0d4c9c634aa5eb937ec, type: 2}

@@ -42,7 +42,7 @@ public class Interact : MonoBehaviour
         //check if left click pressed
         if (InputRouter.instance.AttackPressed)
         {
-            if (heldObject == null)
+            if (heldObject == null && hit.transform.gameObject != null)
             {
                 Debug.Log("Trying to pickup object");
                 Debug.DrawRay(cam.transform.position, cam.transform.TransformDirection(Vector3.forward) * pickupRange, Color.red, 5f);
