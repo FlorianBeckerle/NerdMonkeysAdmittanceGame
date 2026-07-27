@@ -33,6 +33,15 @@ public class BottleCrate : MonoBehaviour
             return;
         }
         
+        Rigidbody rb = newBottle.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.useGravity = false;
+            rb.linearDamping = 10;
+            //might disable this later
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+        }
+        
         newIngredient.ingredientSO = ingredientSO;
         newIngredient.ChangeColor();
     }

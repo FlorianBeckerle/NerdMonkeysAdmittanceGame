@@ -19,5 +19,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 703ba87e1b4b67941bbe17d525efff3c, type: 2}
   - {fileID: 11400000, guid: 1307dac107722a4469ee46f5c5ef8bff, type: 2}
   - {fileID: 11400000, guid: bcdd83c3928f7c546ae08074f2bebe35, type: 2}
+  - {fileID: 11400000, guid: ae90482df73adaa499eb89efa0a6f2e8, type: 2}
   failedIngredient: {fileID: 11400000, guid: b4399369f38511b4e9a7a3e08e542b81, type: 2}
   itemPrefab: {fileID: 8335202070420886745, guid: b305603ef6d68c74a92f3c444c0e3e3e, type: 3}
