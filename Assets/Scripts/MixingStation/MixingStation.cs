@@ -59,6 +59,11 @@ public class MixingStation : MonoBehaviour
             Debug.Log("Both slots filled — attempting combine");
             IngredientSO result = _recipies.FindResult(ingredientA, ingredientB);
 
+            if (result.name != _recipies.GetFailedIngredient().name)
+            {
+                GameManager.instance.TryAddingRecipes(result);
+            }
+
             SpawnResultBottle(result);
         }
     }
@@ -76,6 +81,6 @@ public class MixingStation : MonoBehaviour
         {
             i.ingredientSO = result;
         }
-        go.name = result.Name;
+        go.name = result.name;
     }
 }

@@ -73,8 +73,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Extend to escape once implemented
+        _canMove = (!InputRouter.instance.InventoryPressed);
         if (_canMove)
         {
+            Cursor.lockState = CursorLockMode.Locked;
             //crouch
             HandleCrouch();
             //sprint
@@ -88,6 +91,10 @@ public class PlayerMovement : MonoBehaviour
             
             //Jump
             HandleJump();
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Confined;
         }
     }
 

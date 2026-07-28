@@ -35,5 +35,10 @@ public class IngredientCollectionSO : ScriptableObject
     {
         return ingredients;
     }
+
+    public IngredientSO GetFailedIngredient()
+    {
+        return failedIngredient;
+    }
     
 }

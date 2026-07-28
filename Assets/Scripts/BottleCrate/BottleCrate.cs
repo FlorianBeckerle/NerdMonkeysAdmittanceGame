@@ -7,8 +7,11 @@ public class BottleCrate : MonoBehaviour
     [SerializeField] private GameObject ingredientPrefab;
     [SerializeField] private Transform spawnPoint;
     
+    [SerializeField] private AudioSource audioSource;
     
     [SerializeField] private IngredientSO ingredientSO;
+
+    private bool isInitialSpawn = true;
 
     // Update is called once per frame
     void Update()
@@ -19,8 +22,19 @@ public class BottleCrate : MonoBehaviour
         }
         else
         {
+            if (!isInitialSpawn)
+            {
+                PlayRustleSound();    
+            }
+            
             SpawnNewBottle();
+            isInitialSpawn = false;
         }
+    }
+
+    private void PlayRustleSound()
+    {
+        audioSource.Play();
     }
 
     private void SpawnNewBottle()

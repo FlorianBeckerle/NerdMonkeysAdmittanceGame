@@ -38,8 +38,11 @@ public class Interact : MonoBehaviour
         {
             if (hit.transform.root != this.transform.root) // ignore self and children
             {
-                
-                hudInfo.UpdateInfoText(hit.transform.name);
+                Ingredient i = hit.transform.gameObject.GetComponent<Ingredient>();
+                if (i != null)
+                {
+                    hudInfo.UpdateInfoText(i.ingredientSO.name);    
+                }
             }
         }
         else

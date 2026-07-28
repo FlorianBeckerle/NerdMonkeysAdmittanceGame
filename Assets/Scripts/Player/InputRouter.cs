@@ -20,7 +20,7 @@ public class InputRouter : MonoBehaviour
     public bool AttackPressed { get; private set; }
     
     //Event
-    public UnityEvent InteractPressed;
+    //public UnityEvent InteractPressed;
     
     //Toggle
     public bool ControlsPressed { get; private set; }
@@ -42,7 +42,7 @@ public class InputRouter : MonoBehaviour
         
         //initialize Events
         
-        InteractPressed = new UnityEvent();
+        //InteractPressed = new UnityEvent();
         
         //Set all inputs to false for start
         ControlsPressed = false;
@@ -116,13 +116,20 @@ public class InputRouter : MonoBehaviour
     public void OnControls(InputAction.CallbackContext context)
     {
         Debug.Log("Controls performed");
-        ControlsPressed = !ControlsPressed;
+        if (context.started)
+        {
+            ControlsPressed = !ControlsPressed;    
+        }
+        
     }
 
     public void OnInventory(InputAction.CallbackContext context)
     {
         Debug.Log("Inventory performed");
-        InventoryPressed = !InventoryPressed;
+        if (context.started)
+        {
+            InventoryPressed = !InventoryPressed;
+        }
     }
 
 

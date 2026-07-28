@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CustomerManager : MonoBehaviour
 {
-    [SerializeField] private IngredientCollectionSO possibleOrders;
+    private List<IngredientSO> _possibleOrders;
     [SerializeField] private int maxOrderSize = 6;
 
     [Header("Components")] 
@@ -20,7 +20,8 @@ public class CustomerManager : MonoBehaviour
 
 
     private bool customerActive = false;
-    
+
+    private int currentReward = 0;
     
 
     
@@ -33,6 +34,8 @@ public class CustomerManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _possibleOrders = GameManager.instance.GetDiscoveredRecipes();
+        
         orderUICanvas.enabled = false;
 
         StartCoroutine(StartCustomers());
@@ -44,15 +47,18 @@ public class CustomerManager : MonoBehaviour
         yield return new WaitForSeconds(10f);
         customerAnimator.SetTrigger("Spawn");
         GenerateNewOrder();
+        CalculateReward();
         SpawnUIElements();
         
         while (true)
         {
             
-            yield return new WaitForSeconds(60f); //wait 60seconds between customers, duration might vary depending on when in the cycle the previous customer is finished
+            yield return new WaitForSeconds(Random.Range(10f, 20f)); //wait 10-20 seconds between customers, duration might vary depending on when in the cycle the previous customer is finished
             if (customerActive) continue; //skip if customer is still active
             customerAnimator.SetTrigger("Spawn");
+            _possibleOrders = GameManager.instance.GetDiscoveredRecipes(); //get new recipes if any discovered //could be handled with an event, but I'm short on time so this must suffice for now
             GenerateNewOrder();
+            CalculateReward();
             SpawnUIElements();
         }
     }
@@ -74,8 +80,8 @@ public class CustomerManager : MonoBehaviour
 
         for (int i = 0; i < demand; i++)
         {
-            int randomIndex = Random.Range(0, possibleOrders.GetIngredientSos().Count);
-            currentOrder.Add(possibleOrders.GetIngredientSos()[randomIndex]); //get random ingredient from available
+            int randomIndex = Random.Range(0, _possibleOrders.Count);
+            currentOrder.Add(_possibleOrders[randomIndex]); //get random ingredient from available
         }
         
         customerActive = true;
@@ -127,6 +133,25 @@ public class CustomerManager : MonoBehaviour
         currentOrderUIElements.Add(gameObject);
     }
 
+    //Calculates the total value of the order //for example: 2x red potion = 2x red potion .value 
+    private void CalculateReward()
+    {
+        int reward = 0;
+
+        foreach (var cur in currentOrder)
+        {
+            reward += cur.value;
+        }
+        
+        this.currentReward = reward;
+    }
+    
+    private void GiveReward()
+    {
+        GameManager.instance.IncreaseMoney(currentReward);
+        currentReward = 0;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer != LayerMask.NameToLayer("PickupAble")) return;
@@ -163,6 +188,8 @@ public class CustomerManager : MonoBehaviour
             customerAnimator.SetTrigger("Despawn");
             
             customerActive = false;
+
+            GiveReward();
         }
     }
 
