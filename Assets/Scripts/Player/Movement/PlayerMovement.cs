@@ -18,9 +18,6 @@ public class PlayerMovement : MonoBehaviour
     private float _gravity = -18.62f;
     private float _jumpStrength = 2f;
     
-    //Camera
-    private float _lookSensitivity = 0.25f;
-    
     [Header("Components")]
     [SerializeField] private Camera _camera;
     [SerializeField] private CharacterController _controller;
@@ -53,6 +50,9 @@ public class PlayerMovement : MonoBehaviour
         _curTargetSpeed = _walkSpeed;
         _curHeight = _standHeight;
         _playerPoseState = PlayerPoseStateEnum.Standing;
+        
+        //mouse sensitivity
+        
 
         //Fallbacks if components are not set yet
         _playerBody = this.transform;
@@ -73,8 +73,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Extend to escape once implemented
-        _canMove = (!InputRouter.instance.InventoryPressed);
+        //can move if not in inventory and not in escape menu
+        _canMove = (!InputRouter.instance.InventoryPressed && !InputRouter.instance.EscapePressed);
         if (_canMove)
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -108,7 +108,8 @@ public class PlayerMovement : MonoBehaviour
     {
         //Get look input from InputRouter
         Vector2 lookInput = InputRouter.instance.Look;
-        
+
+        float _lookSensitivity = GameManager.instance.mouseSensitivity;
         //Calculate Mouse Movement
         float mouseX = lookInput.x * _lookSensitivity;
         float mouseY = lookInput.y * _lookSensitivity;

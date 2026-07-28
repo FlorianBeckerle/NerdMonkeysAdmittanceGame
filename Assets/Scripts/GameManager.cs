@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<IngredientSO> _discoveredRecipes; 
     [SerializeField] private int _curMoney = 0;
     
+    public float mouseSensitivity;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -35,6 +37,8 @@ public class GameManager : MonoBehaviour
         }
 
         AddDefaultIngredients();
+        
+        mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 1f);
     }
 
     

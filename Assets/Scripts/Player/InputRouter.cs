@@ -25,6 +25,7 @@ public class InputRouter : MonoBehaviour
     //Toggle
     public bool ControlsPressed { get; private set; }
     public bool InventoryPressed { get; private set; }
+    public bool EscapePressed { get; private set; }
 
 
     //Make Input-Router a singleton because it should only exist once
@@ -50,6 +51,7 @@ public class InputRouter : MonoBehaviour
         CrouchPressed = false;
         JumpPressed = false;
         AttackPressed = false;
+        EscapePressed = false;
 
     }
     
@@ -132,12 +134,14 @@ public class InputRouter : MonoBehaviour
         }
     }
 
-
-    /*
-     * ======================
-     *       UI Events
-     * ======================
-     */
+    public void OnEscape(InputAction.CallbackContext context)
+    {
+        Debug.Log("Escape performed");
+        if (context.started)
+        {
+            EscapePressed = !EscapePressed;
+        }
+    }
     
     
 }
