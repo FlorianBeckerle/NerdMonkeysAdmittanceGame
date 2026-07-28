@@ -34,7 +34,7 @@ public class Ingredient : MonoBehaviour
                 
                 //Emission Attempt
                 materials[i].EnableKeyword("_EMISSION");
-                materials[i].SetColor("_EmissionColor", ingredientSO.color);
+                materials[i].SetColor("_EmissionColor", ingredientSO.color * 10f);
                 
                 break;
             }
