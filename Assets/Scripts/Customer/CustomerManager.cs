@@ -220,6 +220,8 @@ public class CustomerManager : MonoBehaviour
             PlayCashSound();
             
             customerActive = false;
+            
+            ordersFullfilled++;//increase amount of finished orders
 
             GiveReward();
         }
