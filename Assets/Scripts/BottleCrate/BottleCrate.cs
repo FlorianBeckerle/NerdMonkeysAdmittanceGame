@@ -34,6 +34,7 @@ public class BottleCrate : MonoBehaviour
 
     private void PlayRustleSound()
     {
+        audioSource.pitch = Random.Range(0.8f, 1.2f);
         audioSource.Play();
     }
 

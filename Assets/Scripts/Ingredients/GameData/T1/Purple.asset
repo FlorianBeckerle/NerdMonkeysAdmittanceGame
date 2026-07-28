@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40c4fc4df70aeec46a0032999b87753f, type: 3}
   m_Name: Purple
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
-  Name: Purple
+  displayName: Purple
   color: {r: 0.5566038, g: 0, b: 0.5566038, a: 1}
+  value: 2
   leftIngredient: {fileID: 11400000, guid: 7e3cfc618936e044f8b563bf0aecffaf, type: 2}
   rightIngredient: {fileID: 11400000, guid: 0cff1aa83bfbf0d4c9c634aa5eb937ec, type: 2}

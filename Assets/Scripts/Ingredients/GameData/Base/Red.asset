@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40c4fc4df70aeec46a0032999b87753f, type: 3}
   m_Name: Red
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
-  Name: Red
+  displayName: Red
   color: {r: 1, g: 0, b: 0, a: 1}
+  value: 1
   leftIngredient: {fileID: 0}
   rightIngredient: {fileID: 0}

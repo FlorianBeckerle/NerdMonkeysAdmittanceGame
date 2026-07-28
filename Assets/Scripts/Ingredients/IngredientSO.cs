@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "IngredientSO", menuName = "Scriptable Objects/IngredientSO")]
 public class IngredientSO : ScriptableObject
 {
-    public string name;
+    [FormerlySerializedAs("name")] public string displayName;
 
     public Color color;
 

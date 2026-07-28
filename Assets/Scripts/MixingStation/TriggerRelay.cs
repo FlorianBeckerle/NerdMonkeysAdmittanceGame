@@ -15,12 +15,16 @@ public class TriggerRelay : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        //don't activate on trigger
+        if (other.isTrigger) return;
         if (other.gameObject.layer != LayerMask.NameToLayer("PickupAble")) return;
         _station.OnIngredientEnter(slot, other);
     }
 
     void OnTriggerExit(Collider other)
     {
+        //don't activate on trigger
+        if (other.isTrigger) return;
         if (other.gameObject.layer != LayerMask.NameToLayer("PickupAble")) return;
         _station.OnIngredientExit(slot, other);
     }

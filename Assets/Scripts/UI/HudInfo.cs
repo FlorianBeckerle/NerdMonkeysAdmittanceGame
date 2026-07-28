@@ -34,6 +34,6 @@ public class HudInfo : MonoBehaviour
     private void UpdateMoney()
     {
         int m = GameManager.instance.GetMoney();
-        _moneyText.text = m.ToString() + "$";
+        _moneyText.text = m.ToString() + " $";
     }
 }

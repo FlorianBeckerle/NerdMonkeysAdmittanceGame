@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _curMoney = 0;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         if (instance == null)
         {
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
 
     public void TryAddingRecipes(IngredientSO ingredient)
     {
-        if (!this._discoveredRecipes.Any(i => i.name == ingredient.name))
+        if (!this._discoveredRecipes.Any(i => i.displayName == ingredient.displayName))
         {
             this._discoveredRecipes.Add(ingredient);
         }

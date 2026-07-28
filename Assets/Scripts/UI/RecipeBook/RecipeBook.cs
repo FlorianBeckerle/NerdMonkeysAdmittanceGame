@@ -20,6 +20,9 @@ public class RecipeBook : MonoBehaviour
     
     [Header("Inputs")]
     private IngredientCollectionSO _ingredientCollection;
+
+
+    private bool _isOpen = false;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,7 +36,13 @@ public class RecipeBook : MonoBehaviour
 
     void Update()
     {
-        _view.SetActive(InputRouter.instance.InventoryPressed);
+        if (_isOpen != InputRouter.instance.InventoryPressed)
+        {
+            _isOpen = InputRouter.instance.InventoryPressed;
+            _view.SetActive(_isOpen);
+            PopulateScrollView();
+        }
+        
     }
 
     private void PopulateScrollView()
@@ -45,7 +54,9 @@ public class RecipeBook : MonoBehaviour
         foreach (var ingredient in _ingredients)
         {
             Sprite colorSprite = CreateColorSprite(ingredient.color);
-            options.Add(new TMP_Dropdown.OptionData(ingredient.name, colorSprite, ingredient.color));
+            
+            TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData(ingredient.displayName, colorSprite, ingredient.color);
+            options.Add(option);
         }
 
         _ingredientA.ClearOptions();
@@ -72,7 +83,7 @@ public class RecipeBook : MonoBehaviour
 
         if (result != null)
         {
-            _resultText.text = result.name;
+            _resultText.text = result.displayName;
             _resultImage.color = result.color;
         }
         else

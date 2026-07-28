@@ -41,7 +41,7 @@ public class Interact : MonoBehaviour
                 Ingredient i = hit.transform.gameObject.GetComponent<Ingredient>();
                 if (i != null)
                 {
-                    hudInfo.UpdateInfoText(i.ingredientSO.name);    
+                    hudInfo.UpdateInfoText(i.ingredientSO.displayName);    
                 }
             }
         }
@@ -62,8 +62,8 @@ public class Interact : MonoBehaviour
                     if (hit.transform.root != this.transform.root) // ignore self and children
                     {
                         PickupObject(hit.transform.gameObject);
-                        /*Debug.Log("Found Object: " + hit.transform.name);
-                        hudInfo.UpdateInfoText(hit.transform.name);*/
+                        /*Debug.Log("Found Object: " + hit.transform.displayName);
+                        hudInfo.UpdateInfoText(hit.transform.displayName);*/
                     }
                 //}
             }

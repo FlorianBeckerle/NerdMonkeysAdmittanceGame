@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class MixingStation : MonoBehaviour
 {
-    [SerializeField] private Collider _ingredientA;
-    [SerializeField] private Collider _ingredientB;
+    [SerializeField] private Collider _ingredientA = null;
+    [SerializeField] private Collider _ingredientB = null;
 
 
     [SerializeField] private Transform resultSpawnLocation;
@@ -59,7 +59,7 @@ public class MixingStation : MonoBehaviour
             Debug.Log("Both slots filled — attempting combine");
             IngredientSO result = _recipies.FindResult(ingredientA, ingredientB);
 
-            if (result.name != _recipies.GetFailedIngredient().name)
+            if (result.displayName != _recipies.GetFailedIngredient().displayName)
             {
                 GameManager.instance.TryAddingRecipes(result);
             }
@@ -76,11 +76,12 @@ public class MixingStation : MonoBehaviour
         
         //Spawn new bottle
         GameObject go = Instantiate(_recipies.itemPrefab, resultSpawnLocation.position, Quaternion.identity);
+        go.transform.SetParent(resultSpawnLocation);
         Ingredient i = go.GetComponent<Ingredient>();
         if (i != null)
         {
             i.ingredientSO = result;
         }
-        go.name = result.name;
+        go.name = result.displayName;
     }
 }

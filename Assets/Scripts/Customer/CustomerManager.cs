@@ -17,6 +17,12 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private Animator customerAnimator;
     
     [Header("Runtime Info")] private float ordersFullfilled = 0f;
+    
+    
+    [Header("Sound")]
+    [SerializeField] private AudioSource _audioSourceSpawn;
+    [SerializeField] private AudioSource _audioSourceBag;
+    [SerializeField] private AudioSource _audioSourceCash;
 
 
     private bool customerActive = false;
@@ -46,6 +52,7 @@ public class CustomerManager : MonoBehaviour
     {
         yield return new WaitForSeconds(10f);
         customerAnimator.SetTrigger("Spawn");
+        PlaySpawnSound();
         GenerateNewOrder();
         CalculateReward();
         SpawnUIElements();
@@ -56,6 +63,7 @@ public class CustomerManager : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(10f, 20f)); //wait 10-20 seconds between customers, duration might vary depending on when in the cycle the previous customer is finished
             if (customerActive) continue; //skip if customer is still active
             customerAnimator.SetTrigger("Spawn");
+            PlaySpawnSound();
             _possibleOrders = GameManager.instance.GetDiscoveredRecipes(); //get new recipes if any discovered //could be handled with an event, but I'm short on time so this must suffice for now
             GenerateNewOrder();
             CalculateReward();
@@ -73,7 +81,6 @@ public class CustomerManager : MonoBehaviour
             maxDemand = maxOrderSize;
         }
         int demand = Random.Range(1, maxDemand +1);
-        demand = 6;
         
         //Clear list
         currentOrder = new List<IngredientSO>();
@@ -152,8 +159,31 @@ public class CustomerManager : MonoBehaviour
         currentReward = 0;
     }
 
+    private void PlaySpawnSound()
+    {
+        PlaySound(_audioSourceSpawn);
+    }
+    
+    private void PlayBagSound()
+    {
+        PlaySound(_audioSourceBag);
+    }
+    
+    private void PlayCashSound()
+    {
+        PlaySound(_audioSourceCash);
+    }
+
+    public void PlaySound(AudioSource audioSource)
+    {
+        audioSource.pitch = Random.Range(0.8f, 1.2f);
+        audioSource.Play();
+    }
+
     void OnTriggerEnter(Collider other)
     {
+        //don't activate on trigger
+        if (other.isTrigger) return;
         if (other.gameObject.layer != LayerMask.NameToLayer("PickupAble")) return;
         //_station.OnIngredientEnter(slot, other);
 
@@ -175,6 +205,7 @@ public class CustomerManager : MonoBehaviour
                     
                     //Destroy bottle that was handed in
                     Destroy(other.gameObject);
+                    PlayBagSound();
                     break;
                 }
 
@@ -186,6 +217,7 @@ public class CustomerManager : MonoBehaviour
         {
             orderUICanvas.enabled = false;
             customerAnimator.SetTrigger("Despawn");
+            PlayCashSound();
             
             customerActive = false;
 

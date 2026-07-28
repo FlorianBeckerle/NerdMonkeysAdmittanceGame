@@ -2955,7 +2955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e40cb84617254d046b57b02f640d835c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HudInfo
-  _moneyText: {fileID: 0}
+  _moneyText: {fileID: 95683386364050481}
   _controlsView: {fileID: 4981843307561555975}
   _infoText: {fileID: 2063413447005181494}
 --- !u!1 &5647573424328201538
