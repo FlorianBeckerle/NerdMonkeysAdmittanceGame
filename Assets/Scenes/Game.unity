@@ -938,7 +938,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -4317,6 +4317,7 @@ MonoBehaviour:
   _iGreen: {fileID: 11400000, guid: 18e8ed0680fd238448cc2e6283fb80fc, type: 2}
   _discoveredRecipes: []
   _curMoney: 0
+  mouseSensitivity: 0
 --- !u!4 &1425062733
 Transform:
   m_ObjectHideFlags: 0
@@ -7811,6 +7812,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3850093473459828359, guid: d0645072a9eb05e419c4d0fc3a40990e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850093473459828359, guid: d0645072a9eb05e419c4d0fc3a40990e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
@@ -7895,7 +7900,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8500324951299171879, guid: d0645072a9eb05e419c4d0fc3a40990e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500324951299171879, guid: d0645072a9eb05e419c4d0fc3a40990e, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500324951299171879, guid: d0645072a9eb05e419c4d0fc3a40990e, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8610580729143766416, guid: d0645072a9eb05e419c4d0fc3a40990e, type: 3}
