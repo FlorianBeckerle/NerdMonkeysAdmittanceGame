@@ -31,12 +31,18 @@ public class Ingredient : MonoBehaviour
             if (materials[i].name.Contains("Ingredient"))
             {
                 materials[i].color = ingredientSO.color;
+                
+                //Emission Attempt
+                materials[i].EnableKeyword("_EMISSION");
+                materials[i].SetColor("_EmissionColor", ingredientSO.color);
+                
                 break;
             }
         }
 
         //assign new materials
         _renderer.materials = materials;
+        
     }
 
 
